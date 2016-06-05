@@ -62,6 +62,7 @@ void bellman(const int start, const vector< vector< pair<int,int> > >& matrix, v
 				if (distances[neighbor.first] > distances[j] + neighbor.second) {
 					distances[neighbor.first] = distances[j] + neighbor.second;
 					pred[neighbor.first] = j;
+					changes_made = true;
 				}
 			}
 		}
