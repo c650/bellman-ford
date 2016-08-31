@@ -50,7 +50,10 @@ void bellman(const int start, const adj_list& graph, std::vector<int>& distances
 
 	// do it V-1 times
 	bool changes_made = true;
-	for (int i = 1, n = graph.size(); i < n; i++) {
+	for (int i = 1, n = graph.size(); i < n && changes_made; i++) {
+		
+		changes_made = false;
+
 		// go through each node
 		for (int j = 0; j < n; j++) {
 			if (distances[j] == std::numeric_limits<int>::max())
@@ -65,9 +68,6 @@ void bellman(const int start, const adj_list& graph, std::vector<int>& distances
 				}
 			}
 		}
-		if (!changes_made)
-			break;
-		changes_made = false;
 	}
 
 	// now we do it one more time to find any negative cycles
